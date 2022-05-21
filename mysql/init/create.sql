@@ -1,0 +1,6 @@
+CREATE SCHEMA `main`;
+
+CREATE TABLE `main`.`test` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
