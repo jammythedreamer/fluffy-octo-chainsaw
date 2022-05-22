@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import * as logic_test from './LOGIC/logic_test';
+import * as route_login from './LOGIC/route_login';
 import * as redis from './DATABASE/redis';
 class App {
   public application: express.Application;
@@ -38,6 +38,21 @@ app.post('/setData', async (req, res) => {
 app.get('/getData', async (req, res) => {
   const key = req.query.key as string;
   const result = await redis.getData(key);
+  res.send(result);
+})
+
+app.post('/account/sign_up', async (req, res) => {
+  const result = await route_login.signUp(req);
+  res.send(result);
+})
+
+app.post('/account/confirm/email', async (req, res) => {
+  const result = await route_login.confirmEmail(req);
+  res.send(result);
+})
+
+app.post('/login', async (req, res) => {
+  const result = await route_login.login(req);
   res.send(result);
 })
 
